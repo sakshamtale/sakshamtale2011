@@ -964,107 +964,75 @@ section {
 }
 
 
+
 /* =====================================
-   LIVE INDICATOR
+   CONTACT DETAILS
 ===================================== */
 
-.live-indicator {
+.contact-links button {
+    font-family: inherit;
+    font-size: 15px;
+    cursor: pointer;
+}
 
-    position: fixed;
+.contact-details {
+    margin-top: 20px;
+}
 
-    right: 25px;
+.contact-detail {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    padding: 18px 22px;
+    border: 1px solid rgba(170,80,255,.35);
+    border-radius: 12px;
+    background: rgba(20,15,35,.7);
+    box-shadow: 0 0 20px rgba(139,44,255,.15);
+    animation: contactFade .25s ease;
+}
 
-    bottom: 25px;
-
+.contact-detail.active {
     display: flex;
-
-    align-items: center;
-
-    gap: 9px;
-
-    padding:
-        10px 17px;
-
-    border-radius: 30px;
-
-    background:
-        rgba(5,20,10,.85);
-
-    border:
-        1px solid
-        rgba(60,255,110,.5);
-
-    color: #55ff88;
-
-    font-size: 13px;
-
-    font-weight: bold;
-
-    letter-spacing: 1px;
-
-    box-shadow:
-        0 0 20px
-        rgba(40,255,90,.25);
-
-    backdrop-filter:
-        blur(10px);
-
-    z-index: 2000;
 }
 
-
-.live-dot {
-
-    width: 9px;
-
-    height: 9px;
-
-    border-radius: 50%;
-
-    background: #35ff69;
-
-    box-shadow:
-
-        0 0 5px #35ff69,
-        0 0 15px #35ff69,
-        0 0 25px #35ff69;
-
-    animation:
-        livePulse 1.4s ease-in-out infinite;
+.contact-detail strong {
+    color: #d19cff;
 }
 
+.contact-detail span {
+    color: #ddd;
+    word-break: break-word;
+}
 
-@keyframes livePulse {
-
-    0%,100% {
-
-        transform:
-            scale(1);
-
+@keyframes contactFade {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
         opacity: 1;
-
-        box-shadow:
-
-            0 0 5px #35ff69,
-            0 0 15px #35ff69;
+        transform: translateY(0);
     }
-
-    50% {
-
-        transform:
-            scale(1.5);
-
-        opacity: .55;
-
-        box-shadow:
-
-            0 0 10px #35ff69,
-            0 0 30px #35ff69,
-            0 0 45px #35ff69;
-    }
-
 }
 
+
+.discord-link {
+    display: inline-block;
+    width: fit-content;
+    margin-top: 5px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    background: linear-gradient(90deg, #5865F2, #7289DA);
+    box-shadow: 0 0 15px rgba(88,101,242,.3);
+    transition: .3s;
+}
+
+.discord-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(88,101,242,.55);
+}
 
 /* =====================================
    FOOTER
@@ -1169,7 +1137,7 @@ footer {
 
 <div class="background">
 
-```
+
 <div class="grid"></div>
 
 <div class="orb orb1"></div>
@@ -1179,7 +1147,7 @@ footer {
 <div class="orb orb3"></div>
 
 <div class="particles"></div>
-```
+
 
 </div>
 
@@ -1222,19 +1190,13 @@ footer {
     </li>
 
     <li>
-        <a href="#projects">
-            Projects
-        </a>
-    </li>
-
-    <li>
         <a href="#contact">
             Contact
         </a>
     </li>
 
 </ul>
-```
+
 
 </nav>
 
@@ -1247,7 +1209,7 @@ footer {
     id="home"
 >
 
-```
+
 <div class="hero-content">
 
 
@@ -1292,7 +1254,7 @@ footer {
 
 
 </div>
-```
+
 
 </section>
 
@@ -1302,7 +1264,7 @@ footer {
 
 <section id="about">
 
-```
+
 <h2 class="section-title">
 
     About
@@ -1636,87 +1598,6 @@ footer {
 </section>
 
 <!-- =====================================
-     PROJECTS
-===================================== -->
-
-<section id="projects">
-
-```
-<h2 class="section-title">
-
-    My
-    <span>Projects</span>
-
-</h2>
-
-
-<div class="project-container">
-
-
-    <div class="project-card">
-
-
-        <div class="project-icon">
-
-            ⛏️
-
-        </div>
-
-
-        <div class="project-content">
-
-
-            <div class="project-status">
-
-                ● ONLINE
-
-            </div>
-
-
-            <h3>
-                MaceSMP26
-            </h3>
-
-
-            <p>
-
-                Minecraft SMP server focused
-                on creating an exciting
-                multiplayer survival experience
-                for players.
-
-            </p>
-
-
-            <div class="project-tags">
-
-                <span>
-                    Minecraft
-                </span>
-
-                <span>
-                    SMP
-                </span>
-
-                <span>
-                    Server Development
-                </span>
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-
-
-</div>
-```
-
-</section>
-
-<!-- =====================================
      CONTACT
 ===================================== -->
 
@@ -1753,47 +1634,43 @@ footer {
 
         <div class="contact-links">
 
+            <button class="contact-btn" onclick="toggleContact('email')">
+                📧 Email
+            </button>
 
-            <!-- EMAIL -->
+            <button class="contact-btn" onclick="toggleContact('phone')">
+                📱 Mobile
+            </button>
 
-            <a
-                href="mailto:saksham.tale@gmail.com"
-                class="contact-btn"
-            >
+            <button class="contact-btn" onclick="toggleContact('discord')">
+                💬 Discord
+            </button>
 
-                📧 Email Me
+        </div>
 
-            </a>
+        <div id="contact-details" class="contact-details">
+            <div id="email-details" class="contact-detail">
+                <strong>📧 Email</strong>
+                <span>saksham.tale1985@gmail.com</span>
+            </div>
 
+            <div id="phone-details" class="contact-detail">
+                <strong>📱 Mobile</strong>
+                <span>+91 7485995704</span>
+            </div>
 
-
-            <!-- PHONE -->
-
-            <a
-                href="tel:+91 7485995704"
-                class="contact-btn"
-            >
-
-                📱 Call Me
-
-            </a>
-
-
-
-            <!-- DISCORD -->
-
-            <a
-                href="Coming Soon"
-                class="contact-btn"
-                target="_blank"
-                rel="noopener"
-            >
-
-                💬 Join My Discord
-
-            </a>
-
-
+            <div id="discord-details" class="contact-detail">
+                <strong>💬 Discord</strong>
+                <span>Join my Discord server</span>
+                <a
+                    href="https://discord.gg/3Ea8F5n4BW"
+                    class="discord-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    🔗 Join Discord Server
+                </a>
+            </div>
         </div>
 
 
@@ -1831,6 +1708,23 @@ LIVE
 ```
 
 </div>
+
+
+<script>
+function toggleContact(type) {
+    const details = document.querySelectorAll(".contact-detail");
+
+    details.forEach(detail => {
+        detail.classList.remove("active");
+    });
+
+    const selected = document.getElementById(type + "-details");
+
+    if (selected) {
+        selected.classList.add("active");
+    }
+}
+</script>
 
 </body>
 
